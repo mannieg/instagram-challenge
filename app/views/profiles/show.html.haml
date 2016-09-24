@@ -1,15 +1,32 @@
 %div.container
   %div.row
-    - if @user
-      %div.user-profile
-        = form_tag profile_path(@user), :multipart => true, :id => 'upload-form' do
-          = file_field_tag 'profile[image]', :id => 'upload-input', accept: 'image/png, image/jpeg, image/jpg'
+    %div.user-profile
+      %section.head-profile
+        %div.left-profile
+          - if @user == current_user
+            = form_tag profile_path(@user), :multipart => true, :id => 'upload-form' do
+              = file_field_tag 'profile[image]', :id => 'upload-input', accept: 'image/png, image/jpeg, image/jpg'
 
-        %img#upload-profile{:src => @user.image.url(:medium), :class => 'img-circle'}
-        %div#upload-profile-txt
-          - if @user.image == false
-            Add a profile photo
-        %h2= @user.username
+          %img#upload-profile{:src => @user.image.url(:medium), :class => 'img-circle'}
+        %div.right-profile
+          %div#upload-profile-txt
+            - if @user.image == false
+              Add a profile photo
+          %h2= @user.username
+          %button#follow Follow
+          %ul.profile-stats-list
+            %li#post-count
+              %b
+                0
+              posts
+            %li#follower-count
+              %b
+                0
+              followers
+            %li#following-count
+              %b
+                0
+              following
       - @user.posts.each_slice(3) do |group|
         %div{:id => "groups"}
           - group.each do |post|

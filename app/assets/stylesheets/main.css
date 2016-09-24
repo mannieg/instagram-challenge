@@ -1,3 +1,7 @@
+h2 {
+  display: inline;
+}
+
 #logo {
   height: 50px !important;
   width: 50px !important;
@@ -8,12 +12,60 @@
 }
 
 #upload-profile-txt {
+  display: inline;
   padding: 10px 0 0 10px;
   color: #3897f0;
 }
 
 #upload-form {
   display: none;
+}
+
+#follow, #following {
+  font-size: 16px;
+  line-height: 25px;
+  padding: 0 11px 0 11px;
+  margin-left: 10px;
+  background: 0 0;
+  border-color: #3897f0;
+  color: #3897f0;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-weight: 600;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-appearance: none;
+}
+
+.head-profile {
+  margin-left: 30%;
+  margin-bottom: 25px;
+  height: 200px;
+}
+
+.left-profile {
+  float:left;
+  overflow:hidden;
+}
+
+.right-profile {
+  margin: 10px;
+  float:left;
+  overflow:hidden;
+}
+
+.profile-stats-list {
+  list-style: none;
+  overflow: hidden;
+  margin: 25px;
+}
+
+.profile-stats-list > li {
+  display: inline;
+  margin-right: 25px;
 }
 
 .glyphicon-heart {
@@ -59,8 +111,8 @@
 }
 
 .img-circle {
-  height: 100px !important;
-  width: 100px !important;
+  height: 150px !important;
+  width: 150px !important;
 }
 
 .user-profile {

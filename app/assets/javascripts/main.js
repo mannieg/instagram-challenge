@@ -50,6 +50,10 @@
         uploadProfileImage();
       });
 
+      $('#follow').click(function() {
+        $(this).text($(this).text() == 'Follow' ? 'Unfollow' : 'Follow')
+      });
+
       $('#heart').on('click', function(event) {
         var className = 'glyphicon glyphicon-heart-empty';
 
