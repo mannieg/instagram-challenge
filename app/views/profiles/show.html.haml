@@ -13,7 +13,8 @@
             - if @user.image == false
               Add a profile photo
           %h2= @user.username
-          %button#follow Follow
+          - if @user != current_user
+            %button#follow Follow
           %ul.profile-stats-list
             %li#post-count
               %b

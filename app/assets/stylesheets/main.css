@@ -2,6 +2,21 @@ h2 {
   display: inline;
 }
 
+img {
+  cursor: pointer;
+}
+
+#search {
+  margin-left: 31%;
+  border-radius: 3px;
+  border: solid 1px #dbdbdb;
+  color: #262626;
+  font-size: 14px;
+  outline: none;
+  padding: 3px 10px 3px 26px;
+  z-index: 2;
+}
+
 #logo {
   height: 50px !important;
   width: 50px !important;
@@ -121,6 +136,11 @@ h2 {
 
 .user-profile > form > input[type=file] {
   margin: 0 auto;
+}
+
+.navigation {
+  padding-top: 20px;
+  padding-left: 10px;
 }
 
 #groups {
