@@ -8,6 +8,6 @@ feature 'Follow/Unfollow a user' do
   scenario 'A user can follow another user', :js => true, :focus => true do
     visit '/test_user'
     click_button 'Follow'
-    expect(page).to have_content '1 following'
+    expect(page).to have_content '1 followers'
   end
 end

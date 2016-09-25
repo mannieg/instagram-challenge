@@ -1,6 +1,6 @@
 %div.container
   %div.row
-    %div.user-profile
+    %div.user-profile{:id => "#{@user.id}"}
       %section.head-profile
         %div.left-profile
           - if @user == current_user
@@ -13,8 +13,9 @@
             - if @user.image == false
               Add a profile photo
           %h2= @user.username
-          - if @user != current_user
-            %button#follow Follow
+          - if current_user && @user != current_user
+            %button#follow<
+              = current_user.following?(@user) ? 'Unfollow' : 'Follow'
           %ul.profile-stats-list
             %li#post-count
               %b
@@ -22,11 +23,11 @@
               posts
             %li#follower-count
               %b
-                0
+                = @user.followers.count
               followers
             %li#following-count
               %b
-                0
+                = @user.following.count
               following
       - @user.posts.each_slice(3) do |group|
         %div{:id => "groups"}

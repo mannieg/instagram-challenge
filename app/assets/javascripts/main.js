@@ -1,7 +1,8 @@
 (function() {
-  var postId;
+  var postId, profileId;
 
   $(document).ready(function() {
+
     $('.post img').on('click',function()
       {
         if($(this).attr('class') != 'img-circle')
@@ -51,7 +52,8 @@
       });
 
       $('#follow').click(function() {
-        $(this).text($(this).text() == 'Follow' ? 'Unfollow' : 'Follow')
+        profileId = $(this).parents().eq(2)[0].id;
+        updateFollow(this);
       });
 
       $('#heart').on('click', function(event) {
@@ -96,6 +98,25 @@
 
   });
 
+  function updateFollow(element) {
+    var path = '/' + profileId + '/relationships';
+
+    if ($(element).text() == 'Follow') {
+      $.post(path, function(response) {
+        $('#follower-count > b').text(response.total_followers_count);
+      });
+    } else {
+      $.ajax({
+        url: path + '/' + getCookie('username'),
+        type: 'DELETE',
+        success: function(response) {
+          $('#follower-count > b').text(response.total_followers_count);
+        }
+      });
+    }
+    $(element).text($(element).text() == 'Follow' ? 'Unfollow' : 'Follow');
+  }
+
   function uploadProfileImage() {
     var inp = document.querySelector('#upload-input');
     var formData = new FormData();
@@ -138,8 +159,10 @@
     }
   }
 
-  function postData(inp) {
-
+  function getCookie(name) {
+    var regexp = new RegExp("(?:^" + name + "|;\s*"+ name + ")=(.*?)(?:;|$)", "g");
+    var result = regexp.exec(document.cookie);
+    return (result === null) ? null : result[1];
   }
 
 })();

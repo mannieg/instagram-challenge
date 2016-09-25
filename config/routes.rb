@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profiles, :path => ''
+  resources :profiles, :path => '' do
+    resources :relationships
+  end
 
   resources :posts, shallow: true do
     resources :likes
